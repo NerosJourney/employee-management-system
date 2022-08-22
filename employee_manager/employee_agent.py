@@ -21,11 +21,11 @@ class Employee:
             print(f'{curr} ({self.skill_ratings[curr]}): ')
             self.skill_ratings[curr] = int(input())
     
-    def printEmp(self):
+    def print_employee(self):
         print(self.skill_ratings)
 
 
-def saveEmployee(emp: Employee) -> string:
+def save_employee(emp: Employee) -> string:
     temp = {
         "name": emp.name,
         "company": emp.company.id,

@@ -1,5 +1,5 @@
-from employee_agent import Employee, saveEmployee
-from company_agent import Company, saveCompany
+from employee_agent import Employee, save_employee
+from company_agent import Company, save_company
 
 if __name__ == '__main__':
     print("Enter a company name: ")
@@ -8,13 +8,13 @@ if __name__ == '__main__':
     print("Enter an employees name: ")
     emp1 = Employee(input(), comp)
     emp1.rate()
-    emp1.printEmp()
-    saveEmployee(emp1)
+    emp1.print_employee()
+    save_employee(emp1)
 
     print("Enter an employees name: ")
     emp2 = Employee(input(), comp)
     emp2.rate()
-    emp2.printEmp()
-    saveEmployee(emp2)
+    emp2.print_employee()
+    save_employee(emp2)
 
-    saveCompany(comp)
+    save_company(comp)

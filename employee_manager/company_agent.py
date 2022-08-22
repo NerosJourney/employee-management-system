@@ -12,7 +12,7 @@ class Company:
         return self.next_employee_id - 1
 
 
-def saveCompany(comp: Company):
+def save_company(comp: Company):
     temp = {
         "name": comp.name,
         "id": comp.id,
