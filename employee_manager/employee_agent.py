@@ -25,7 +25,7 @@ class Employee:
         print(self.skill_ratings)
 
 
-def saveEmp(emp: Employee) -> string:
+def saveEmployee(emp: Employee) -> string:
     temp = {
         "name": emp.name,
         "company": emp.company.id,
@@ -40,35 +40,3 @@ def saveEmp(emp: Employee) -> string:
         file.write(obj)
     return obj
 
-def saveCompany(comp: Company) -> string:
-    temp = {
-        "name": comp.name,
-        "id": comp.id,
-        "num_emps": comp.next_employee_id
-    }
-    obj = json.dumps(temp, indent=4)
-    dir = f'../db/{comp.id}'
-    if not os.path.exists(dir):
-        os.makedirs(dir)
-    with open(f'{dir}/company.emp', 'w+') as file:
-        file.write(obj)
-    return obj
-
-
-if __name__ == '__main__':
-    print("Enter a company name: ")
-    comp = Company(input(), 11223344)
-
-    print("Enter an employees name: ")
-    emp1 = Employee(input(), comp)
-    emp1.rate()
-    emp1.printEmp()
-    saveEmp(emp1)
-
-    print("Enter an employees name: ")
-    emp2 = Employee(input(), comp)
-    emp2.rate()
-    emp2.printEmp()
-    saveEmp(emp2)
-
-    saveCompany(comp)
