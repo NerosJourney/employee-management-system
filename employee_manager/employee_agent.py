@@ -1,25 +1,28 @@
 import string, json, os
 from company_agent import Company
 
-
-Skills = ["Fry", "Order", "Drive through"]
-
 class Employee:
     skill_ratings = {}
+
+    skill_bounds = (0, 10)
 
     def __init__(self, name, company: Company):
         self.name = name
         self.company = company
         self.id = company.nextEmpID()
-        for curr in Skills:
+        for curr in company.skills:
             self.skill_ratings[curr] = int(-1)
+
+    def set_skill(self, skill, num):
+        self.skill_ratings[skill] = min(self.skill_bounds[1], max(self.skill_bounds[0], num))
+
 
     def rate(self):
         global Skills
         print(f'Rating: {self.name}  ')
-        for curr in Skills:
+        for curr in self.company.skills:
             print(f'{curr} ({self.skill_ratings[curr]}): ')
-            self.skill_ratings[curr] = int(input())
+            self.set_skill(curr, int(input()))
     
     def print_employee(self):
         print(self.skill_ratings)

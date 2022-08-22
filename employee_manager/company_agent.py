@@ -1,8 +1,9 @@
 import os, json
+import string
 
 class Company:
     next_employee_id = 0
-
+    skills = []
     def __init__(self, name, id):
         self.name = name
         self.id = id
@@ -10,6 +11,12 @@ class Company:
     def nextEmpID(self):
         self.next_employee_id += 1
         return self.next_employee_id - 1
+
+    def add_skill(self, skill: string) -> bool:
+        if skill in self.skills:
+            return False
+        self.skills.append(skill)
+        return True
 
 
 def save_company(comp: Company):
