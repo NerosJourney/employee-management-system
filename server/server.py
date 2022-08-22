@@ -3,8 +3,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-employees = ["John", "James", "Jimmy", "Joe"]
-
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
