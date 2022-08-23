@@ -128,6 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+#vscode file
+.vscode/
+
 
 #Temporary employee lists
 *.emp
