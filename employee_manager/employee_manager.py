@@ -1,5 +1,6 @@
-from employee_agent import Employee, save_employee
-from company_agent import Company, save_company
+from employee_agent import Employee
+from company_agent import Company
+from db_agent import save_company, save_employee
 
 if __name__ == '__main__':
     print("Enter a company name: ")
@@ -9,15 +10,17 @@ if __name__ == '__main__':
     comp.add_skill("Manager")
 
     print("Enter an employees name: ")
-    emp1 = Employee(input(), comp)
-    emp1.rate()
+    emp1 = Employee(input(), comp.get_next_employee_id())
+    comp.add_employee(emp1)
+    comp.rate_employee(emp1.id)
     emp1.print_employee()
-    save_employee(emp1)
+    save_employee(emp1, comp)
 
     print("Enter an employees name: ")
-    emp2 = Employee(input(), comp)
-    emp2.rate()
+    emp2 = Employee(input(), comp.get_next_employee_id())
+    comp.add_employee(emp2)
+    comp.rate_employee(emp2.id)
     emp2.print_employee()
-    save_employee(emp2)
+    save_employee(emp2, comp)
 
     save_company(comp)
