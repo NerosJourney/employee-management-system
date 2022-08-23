@@ -1,3 +1,10 @@
+########
+# Bailey Wimer
+# Aug 22, 2022
+# company_agent.py
+# A simple main file for early stage debugging and verification of functionality
+#
+
 from employee_agent import Employee
 from company_agent import Company
 from db_agent import save_company, save_employee

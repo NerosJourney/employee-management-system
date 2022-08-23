@@ -1,8 +1,17 @@
+########
+# Bailey Wimer
+# Aug 22, 2022
+# db_agent.py
+# Contains functions for saving data to files to act as a makeshift database
+#
+
 from company_agent import Company
 from employee_agent import Employee
 
 import json, os
 
+# Converts key company data (except employees) into a json object to save in the directory:
+# /db/<company_id>/company.emp
 def save_company(comp: Company):
     temp = {
         "name": comp.name,
@@ -18,7 +27,8 @@ def save_company(comp: Company):
         file.write(obj)
     return obj
 
-
+# Converts key employee data into a json object to save in the directory:
+# /db/<company_id>/<employee_id>.emp
 def save_employee(emp: Employee, comp: Company):
     temp = {
         "name": emp.name,

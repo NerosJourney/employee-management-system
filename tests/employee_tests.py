@@ -1,3 +1,10 @@
+########
+# Bailey Wimer
+# Aug 22, 2022
+# company_agent.py
+# Unit tests for employees using the unittest python module
+#
+
 import unittest, sys
 
 sys.path.insert(0, '/home/nero/code/personal/employee-management-system/employee_manager')
