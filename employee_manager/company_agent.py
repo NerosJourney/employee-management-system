@@ -14,7 +14,7 @@ class Company:
     number_of_employees = 0
     # The list of skills which employees of this company could have
     skills = []
-    employees = []
+    employees = {}
 
     def __init__(self, name, id):
         self.name = name
@@ -27,7 +27,8 @@ class Company:
 
     # Adds an employee to the list of employees within this company
     def add_employee(self, emp: Employee):
-        self.employees.append(emp)
+        self.employees[emp.id] = emp
+        print(self.employees)
 
     # Defines a new skill which should be included in every employee's review for this company
     def add_skill(self, skill: string) -> bool:
