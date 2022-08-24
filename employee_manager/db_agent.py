@@ -16,7 +16,7 @@ def save_company(comp: Company):
     temp = {
         "name": comp.name,
         "id": comp.id,
-        "num_emps": comp.next_employee_id,
+        "num_emps": comp.number_of_employees,
         "skills": comp.skills
     }
     obj = json.dumps(temp, indent=4)
