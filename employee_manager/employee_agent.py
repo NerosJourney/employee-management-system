@@ -9,7 +9,6 @@
 
 # Manages all data associated with a single employee, including individual skill ratings.
 class Employee:
-    skill_ratings = {}
 
     # The upper and lower bound of a rating for an employee's skill
     skill_bounds = (0, 10)
@@ -17,6 +16,7 @@ class Employee:
     def __init__(self, name, id):
         self.name = name
         self.id = id
+        self.skill_ratings = {}
 
     # Sets a skill to the value (constrained within skill_bounds) or creates it if it doesn't exist
     def set_skill(self, skill, num):

@@ -11,14 +11,14 @@ from employee_agent import Employee
 # The Company class contains all necessary data required for the corresponding company.
 # Responsible for managing a list of employees, finding employees within that list, and handling a list of skills
 class Company:
-    number_of_employees = 0
     # The list of skills which employees of this company could have
-    skills = []
-    employees = {}
 
     def __init__(self, name, id):
         self.name = name
         self.id = id
+        self.number_of_employees = 0
+        self.skills = []
+        self.employees = {}
     
     # Returns the next available employee ID for this company
     def get_next_employee_id(self):
@@ -28,7 +28,6 @@ class Company:
     # Adds an employee to the list of employees within this company
     def add_employee(self, emp: Employee):
         self.employees[emp.id] = emp
-        print(self.employees)
 
     # Defines a new skill which should be included in every employee's review for this company
     def add_skill(self, skill: string) -> bool:
@@ -44,4 +43,14 @@ class Company:
         for curr in self.skills:
             #print(f'{curr} ({temp.skill_ratings[curr]}): ')
             print(curr, ": ", sep='')
-            temp.set_skill(curr, int(input()))
+            self.employees[employee_ID].set_skill(curr, int(input()))
+
+    def search_employees_by_skill(self, skill: string) -> Employee:
+        if len(self.employees) == 0:
+            return None
+        highest_skill = 0
+        for x in range(0, self.number_of_employees):
+            if self.employees[x].get_skill(skill) > self.employees[highest_skill].get_skill(skill):
+                highest_skill = x
+        return self.employees[highest_skill]
+

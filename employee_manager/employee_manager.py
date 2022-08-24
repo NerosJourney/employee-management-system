@@ -21,13 +21,22 @@ if __name__ == '__main__':
     comp.add_employee(emp1)
     comp.rate_employee(emp1.id)
     emp1.print_employee()
-    save_employee(emp1, comp)
 
     print("Enter an employees name: ")
     emp2 = Employee(input(), comp.get_next_employee_id())
     comp.add_employee(emp2)
     comp.rate_employee(emp2.id)
     emp2.print_employee()
+
+    print("Enter an employees name: ")
+    emp3 = Employee(input(), comp.get_next_employee_id())
+    comp.add_employee(emp3)
+    comp.rate_employee(emp3.id)
+    emp3.print_employee()
+    save_employee(emp3, comp)
+    save_employee(emp1, comp)
     save_employee(emp2, comp)
 
     save_company(comp)
+
+    print(comp.search_employees_by_skill('Fry').name)
