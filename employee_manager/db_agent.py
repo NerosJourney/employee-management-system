@@ -42,3 +42,7 @@ def save_employee(emp: Employee, comp: Company):
     with open(f'{dir}/{emp.id}.emp', 'w+') as file:
         file.write(obj)
     return obj
+
+def save_all_employees(comp: Company):
+    for x in comp.employees.values():
+        save_employee(x, comp)
