@@ -11,10 +11,14 @@ from db_agent import *
 from random_company import generate_random_employees
 
 if __name__ == '__main__':
-    comp = load_company(11223344)
-    generate_random_employees(comp, 2)
-    save_all_employees(comp)
-    save_company(comp)
+    comp = load_all(11223344)
+    for x in comp.employees.values():
+        x.print_employee()
+    print(f'Number of employees: {len(comp.employees.values())}')
+    # generate_random_employees(comp, 1000)
+    # save_all_employees(comp)
+    # save_company(comp)
+
     # print("Enter a company name: ")
     # comp = Company(input(), 11223344)
     # comp.add_skill("Fry")

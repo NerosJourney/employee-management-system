@@ -31,5 +31,5 @@ class Employee:
             return 0
     
     def print_employee(self):
-        print(self.skill_ratings)
+        print(self.name, self.skill_ratings)
 

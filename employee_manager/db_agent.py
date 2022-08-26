@@ -71,3 +71,9 @@ def load_company(comp_id) -> Company:
     comp.number_of_employees = obj["num_emps"]
     comp.skills = obj["skills"]
     return comp
+
+def load_all(comp_id) -> Company:
+    comp = load_company(comp_id)
+    for x in range(0, comp.number_of_employees):
+        load_employee(comp, x)
+    return comp
