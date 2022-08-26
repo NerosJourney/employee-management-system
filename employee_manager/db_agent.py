@@ -43,6 +43,31 @@ def save_employee(emp: Employee, comp: Company):
         file.write(obj)
     return obj
 
+# Saves all employees that belong to the specified company
 def save_all_employees(comp: Company):
     for x in comp.employees.values():
         save_employee(x, comp)
+
+# TODO increment/determine if need to increment next id in company
+def load_employee(comp: Company, id) -> Employee:
+    dir = f'../db/{comp.id}'
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+        return None
+    with open(f'{dir}/{id}.emp', 'r') as file:
+        obj = json.loads(file.read())
+    emp = Employee(obj["name"], id)
+    emp.skill_ratings = obj["skills"]
+    comp.add_employee(emp)
+
+def load_company(comp_id) -> Company:
+    dir = f'../db/{comp_id}'
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+        return None
+    with open(f'{dir}/company.emp', 'r') as file:
+        obj = json.loads(file.read())
+    comp = Company(obj["name"], comp_id)
+    comp.number_of_employees = obj["num_emps"]
+    comp.skills = obj["skills"]
+    return comp

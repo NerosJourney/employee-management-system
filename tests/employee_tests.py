@@ -11,6 +11,7 @@ sys.path.insert(0, '/home/nero/code/personal/employee-management-system/employee
 
 from employee_agent import Employee
 from company_agent import Company
+from db_agent import save_employee, load_employee
 
 class TestEmployeeGeneration(unittest.TestCase):
     def test_employee_skill_assignments(self):
@@ -31,6 +32,18 @@ class TestEmployeeGeneration(unittest.TestCase):
         self.assertEqual(emp.name, "John")
         self.assertEqual(emp.id, 0)
         self.assertEqual(emp.company, comp)
+
+    def test_employee_save_load(self):
+        comp = Company("Test", 1234)
+        emp = Employee("John")
+        emp.set_skill("1", 1)
+        emp.set_skill("2", 2)
+        save_employee(emp, comp)
+        emp2 = load_employee(comp, 0)
+        self.assertEqual(emp2.get_skill("1"), 1)
+        self.assertEqual(emp2.get_skill("2"), 2)
+        self.assertEqual(emp2.name, "John")
+
 
 if __name__ == '__main__':
     unittest.main()
