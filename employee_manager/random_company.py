@@ -4,7 +4,8 @@ import random
 
 # Generates an employee with the name "Randomized" and random skills based on the company and adds it to the company
 def generate_random_employee(comp: Company):
-    emp = Employee("Randomized", comp.get_next_employee_id())
+    temp = comp.get_next_employee_id()
+    emp = Employee(str(temp), temp)
     for x in comp.skills:
         emp.set_skill(x, random.randint(0, 10))
     comp.add_employee(emp)

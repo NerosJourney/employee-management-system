@@ -54,3 +54,10 @@ class Company:
                 highest_skill = x
         return self.employees[highest_skill]
 
+    def list_all_with_skill_above(self, skill: string, cutoff: int):
+        emps = []
+        for x in range(0, self.number_of_employees):
+            if self.employees[x].get_skill(skill) >= cutoff:
+                emps.append(self.employees[x])
+        return emps
+

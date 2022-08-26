@@ -15,6 +15,12 @@ if __name__ == '__main__':
     for x in comp.employees.values():
         x.print_employee()
     print(f'Number of employees: {len(comp.employees.values())}')
+
+    emps = comp.list_all_with_skill_above("Fry", 7)
+    for x in emps:
+        x.print_employee()
+    print(len(emps))
+
     # generate_random_employees(comp, 1000)
     # save_all_employees(comp)
     # save_company(comp)
@@ -32,8 +38,8 @@ if __name__ == '__main__':
     # emp1.print_employee()
     # save_employee(emp1, comp)
 
-    # # print("Enter a number of employees: ")
-    # # generate_random_employees(comp, int(input()))
+    # print("Enter a number of employees: ")
+    # generate_random_employees(comp, int(input()))
 
     # save_all_employees(comp)
     # save_company(comp)
