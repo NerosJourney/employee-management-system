@@ -5,19 +5,17 @@
 # Contains the Employaee class for managing an employee's data
 #
 
-default_avail = [(0,0), (0,0), (0,0), (0,0), (0,0), (0,0), (0,0)]
-
 # Manages all data associated with a single employee, including individual skill ratings.
 class Employee:
 
     # The upper and lower bound of a rating for an employee's skill
     skill_bounds = (0, 10)
 
-    def __init__(self, name, id, avail=default_avail):
+    def __init__(self, name, id):
         self.name = name
         self.id = id
         self.skill_ratings = {}
-        self.avail = avail
+        self.avail = [(0,0), (0,0), (0,0), (0,0), (0,0), (0,0), (0,0)]
 
     # Sets a skill to the value (constrained within skill_bounds) or creates it if it doesn't exist
     def set_skill(self, skill, num):
@@ -38,7 +36,7 @@ class Employee:
         self.avail[day] = hours
 
     def check_avail(self, day, hr) -> bool:
-        return hr >= self.avail[day][0] and hr <= self.avail[day][1]
+        return hr >= self.avail[day][0] and hr < self.avail[day][1]
 
     def print_employee(self):
         print(self.name, self.skill_ratings, self.avail)
@@ -58,4 +56,11 @@ def find_all_with_skill_above(emps, skill, cutoff: int):
     for x in emps.values():
         if x.get_skill(skill) >= cutoff:
             res.append(x)
-    return emps
+    return res
+
+def find_all_with_avail(emps, day, hr):
+    res = []
+    for x in emps.values():
+        if x.check_avail(day, hr):
+            res.append(x)
+    return res

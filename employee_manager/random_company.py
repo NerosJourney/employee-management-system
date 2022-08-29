@@ -1,11 +1,11 @@
 from company_agent import Company
-from employee_agent import Employee, default_avail
+from employee_agent import Employee
 import random
 
 # Generates an employee with the name "Randomized" and random skills based on the company and adds it to the company
 def generate_random_employee(comp: Company):
     temp = comp.get_next_employee_id()
-    emp = Employee(str(temp), temp, default_avail)
+    emp = Employee(str(temp), temp)
     for x in comp.skills:
         emp.set_skill(x, random.randint(0, 10))
     for x in range(0, 7):

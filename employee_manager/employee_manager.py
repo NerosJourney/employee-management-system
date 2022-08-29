@@ -6,7 +6,7 @@
 #
 
 import random
-from employee_agent import Employee, default_avail, find_all_with_skill_above, search_employees_by_skill
+from employee_agent import Employee, find_all_with_avail, find_all_with_skill_above, search_employees_by_skill
 from company_agent import Company
 from db_agent import *
 from random_company import generate_random_employees, generate_random_employee
@@ -16,10 +16,14 @@ if __name__ == '__main__':
     comp.add_skill("Fry")
     comp.add_skill("Cook")
     comp.add_skill("DTO")
-    generate_random_employee(comp)
-    emp = comp.employees[0]
-    emp.print_employee()
-    count = 0
-    for x in range(0, 7):
-        count += emp.get_avail(x)[1] - emp.get_avail(x)[0] + 1
-    print(f'{count} hours for the week')
+    generate_random_employees(comp, 100)
+    print("Highest Fry skill: ")
+    search_employees_by_skill(comp.employees, "Fry").print_employee()
+    available = find_all_with_avail(comp.employees, 2, 14)
+    print("All employees available on Wednesday at 14:00")
+    for x in available:
+        x.print_employee()
+    skill = find_all_with_skill_above(comp.employees, "DTO", 8)
+    print("All employees with an 8 or better DTO")
+    for x in skill:
+        x.print_employee()
