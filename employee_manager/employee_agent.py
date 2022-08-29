@@ -43,3 +43,19 @@ class Employee:
     def print_employee(self):
         print(self.name, self.skill_ratings, self.avail)
 
+
+def search_employees_by_skill(emps, skill) -> Employee:
+    if len(emps) == 0:
+        return None
+    highest_skill = 0
+    for x in emps.values():
+        if x.get_skill(skill) > emps[highest_skill].get_skill(skill):
+            highest_skill = x.id
+    return emps[highest_skill]
+
+def find_all_with_skill_above(emps, skill, cutoff: int):
+    res = []
+    for x in emps.values():
+        if x.get_skill(skill) >= cutoff:
+            res.append(x)
+    return emps

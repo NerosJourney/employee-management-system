@@ -6,13 +6,16 @@
 #
 
 import random
-from employee_agent import Employee, default_avail
+from employee_agent import Employee, default_avail, find_all_with_skill_above, search_employees_by_skill
 from company_agent import Company
 from db_agent import *
 from random_company import generate_random_employees, generate_random_employee
 
 if __name__ == '__main__':
     comp = Company("Dq", 11223344)
+    comp.add_skill("Fry")
+    comp.add_skill("Cook")
+    comp.add_skill("DTO")
     generate_random_employee(comp)
     emp = comp.employees[0]
     emp.print_employee()

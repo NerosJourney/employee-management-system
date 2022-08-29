@@ -45,19 +45,3 @@ class Company:
             print(curr, ": ", sep='')
             self.employees[employee_ID].set_skill(curr, int(input()))
 
-    def search_employees_by_skill(self, skill: string) -> Employee:
-        if len(self.employees) == 0:
-            return None
-        highest_skill = 0
-        for x in range(0, self.number_of_employees):
-            if self.employees[x].get_skill(skill) > self.employees[highest_skill].get_skill(skill):
-                highest_skill = x
-        return self.employees[highest_skill]
-
-    def list_all_with_skill_above(self, skill: string, cutoff: int):
-        emps = []
-        for x in range(0, self.number_of_employees):
-            if self.employees[x].get_skill(skill) >= cutoff:
-                emps.append(self.employees[x])
-        return emps
-
