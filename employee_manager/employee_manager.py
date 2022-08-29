@@ -5,50 +5,18 @@
 # A simple main file for early stage debugging and verification of functionality
 #
 
-from employee_agent import Employee
+import random
+from employee_agent import Employee, default_avail
 from company_agent import Company
 from db_agent import *
-from random_company import generate_random_employees
+from random_company import generate_random_employees, generate_random_employee
 
 if __name__ == '__main__':
-    comp = load_all(11223344)
-    for x in comp.employees.values():
-        x.print_employee()
-    print(f'Number of employees: {len(comp.employees.values())}')
-
-    emps = comp.list_all_with_skill_above("Fry", 7)
-    for x in emps:
-        x.print_employee()
-    print(len(emps))
-
-    # generate_random_employees(comp, 1000)
-    # save_all_employees(comp)
-    # save_company(comp)
-
-    # print("Enter a company name: ")
-    # comp = Company(input(), 11223344)
-    # comp.add_skill("Fry")
-    # comp.add_skill("Cook")
-    # comp.add_skill("Manager")
-
-    # print("Enter an employees name: ")
-    # emp1 = Employee(input(), comp.get_next_employee_id())
-    # comp.add_employee(emp1)
-    # comp.rate_employee(emp1.id)
-    # emp1.print_employee()
-    # save_employee(emp1, comp)
-
-    # print("Enter a number of employees: ")
-    # generate_random_employees(comp, int(input()))
-
-    # save_all_employees(comp)
-    # save_company(comp)
-
-    # print("Waiting for input...")
-    # input()
-
-    # emp = load_employee(comp, 0)
-
-    # save_all_employees(comp)
-
-    # print(comp.search_employees_by_skill('Fry').name)
+    comp = Company("Dq", 11223344)
+    generate_random_employee(comp)
+    emp = comp.employees[0]
+    emp.print_employee()
+    count = 0
+    for x in range(0, 7):
+        count += emp.get_avail(x)[1] - emp.get_avail(x)[0] + 1
+    print(f'{count} hours for the week')
