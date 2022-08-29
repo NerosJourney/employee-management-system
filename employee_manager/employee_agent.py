@@ -52,15 +52,15 @@ def search_employees_by_skill(emps, skill) -> Employee:
     return emps[highest_skill]
 
 def find_all_with_skill_above(emps, skill, cutoff: int):
-    res = []
+    res = {}
     for x in emps.values():
         if x.get_skill(skill) >= cutoff:
-            res.append(x)
+            res[x.id] = x
     return res
 
 def find_all_with_avail(emps, day, hr):
-    res = []
+    res = {}
     for x in emps.values():
         if x.check_avail(day, hr):
-            res.append(x)
+            res[x.id] = x
     return res

@@ -21,9 +21,15 @@ if __name__ == '__main__':
     search_employees_by_skill(comp.employees, "Fry").print_employee()
     available = find_all_with_avail(comp.employees, 2, 14)
     print("All employees available on Wednesday at 14:00")
-    for x in available:
+    for x in available.values():
         x.print_employee()
     skill = find_all_with_skill_above(comp.employees, "DTO", 8)
     print("All employees with an 8 or better DTO")
-    for x in skill:
+    for x in skill.values():
         x.print_employee()
+    print("Combination: ")
+    combo = find_all_with_avail(skill, 2, 14)
+    for x in combo.values():
+        x.print_employee()
+    print("Best frier on Wednesday at 14:00: ")
+    search_employees_by_skill(available, "Fry").print_employee()
