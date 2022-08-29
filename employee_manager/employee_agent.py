@@ -13,7 +13,7 @@ class Employee:
     # The upper and lower bound of a rating for an employee's skill
     skill_bounds = (0, 10)
 
-    def __init__(self, name, id, avail):
+    def __init__(self, name, id, avail=default_avail):
         self.name = name
         self.id = id
         self.skill_ratings = {}
